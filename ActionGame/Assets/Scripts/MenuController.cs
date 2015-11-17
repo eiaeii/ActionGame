@@ -12,6 +12,46 @@ public class MenuController : MonoBehaviour {
     public Mesh[] handMeshArray;
     private int handMeshIndex = 0;
 
+    public Color[] colorArray;
+    private int colorIndex = 0;
+    
+    void Start()
+    {
+        colorArray = new Color[]{
+            Color.blue, Color.cyan, Color.green, new Color(0.5f, 0, 0.5f, 1), Color.red
+        };
+
+        if (PlayerPrefs.HasKey("HeadMeshIndex"))
+        {
+            headMeshIndex = PlayerPrefs.GetInt("HeadMeshIndex");
+        }
+        else
+        {
+            headMeshIndex = 0;
+        }
+        SetHeadMesh();
+
+        if (PlayerPrefs.HasKey("HandMeshIndex"))
+        {
+            handMeshIndex = PlayerPrefs.GetInt("HandMeshIndex");
+        }
+        else
+        {
+            handMeshIndex = 0;
+        }
+        SetHandMesh();
+
+        if (PlayerPrefs.HasKey("ColorIndex"))
+        {
+            colorIndex = PlayerPrefs.GetInt("ColorIndex");
+        }
+        else
+        {
+            colorIndex = 0;
+        }
+        OnChangeColor(colorArray[colorIndex]);
+    } 
+
 	public void OnHeadMeshNext()
     {
         headMeshIndex++;
@@ -20,6 +60,7 @@ public class MenuController : MonoBehaviour {
             headMeshIndex = 0;
         }
         headRenderer.sharedMesh = headMeshArray[headMeshIndex];
+        Save();
     }
 
     public void OnHandMeshNext()
@@ -30,6 +71,7 @@ public class MenuController : MonoBehaviour {
             handMeshIndex = 0;
         }
         handRenderre.sharedMesh = handMeshArray[handMeshIndex];
+        Save();
     }
 
     public void OnChangeColor(Color color)
@@ -38,35 +80,59 @@ public class MenuController : MonoBehaviour {
         {
             renderer.material.color = color;
         }
+        Save();
     }
 
     public void OnChangeColorBlue()
     {
-        OnChangeColor(Color.blue);
+        colorIndex = 0;
+        OnChangeColor(colorArray[0]);
     }
 
     public void OnChangeColorCyan()
     {
-        OnChangeColor(Color.cyan);
+        colorIndex = 1;
+        OnChangeColor(colorArray[1]);
     }
 
     public void OnChangeColorGreen()
     {
-        OnChangeColor(Color.green);
+        colorIndex = 2;
+        OnChangeColor(colorArray[2]);
     }
 
     public void OnChangeColorPurple()
     {
-        OnChangeColor(new Color(0.5f, 0, 0.5f, 1));
+        colorIndex = 3;
+        OnChangeColor(colorArray[3]);
     }
 
     public void OnChangeColorRed()
     {
-        OnChangeColor(Color.red);
+        colorIndex = 4;
+        OnChangeColor(colorArray[4]);
     }
 
     public void OnPlay()
     {
 
+    }
+
+    void Save()
+    {
+        PlayerPrefs.SetInt("ColorIndex", colorIndex);
+        PlayerPrefs.SetInt("HeadMeshIndex", headMeshIndex);
+        PlayerPrefs.SetInt("HandMeshIndex", handMeshIndex);
+        PlayerPrefs.Save();
+    }
+
+    void SetHeadMesh()
+    {
+        headRenderer.sharedMesh = headMeshArray[headMeshIndex];
+    }
+
+    void SetHandMesh()
+    {
+        handRenderre.sharedMesh = handMeshArray[handMeshIndex];
     }
 }
