@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MenuController : MonoBehaviour {
 
-    public static MenuController _Instance;
+    //public static MenuController _Instance;
     public SkinnedMeshRenderer headRenderer;
     public SkinnedMeshRenderer handRenderre;
     public SkinnedMeshRenderer[] bodyArray;
@@ -52,12 +52,12 @@ public class MenuController : MonoBehaviour {
         }
         OnChangeColor(colorArray[colorIndex]);
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     } 
 
     void Awake()
     {
-        _Instance = this;
+        //_Instance = this;
     }
 
 	public void OnHeadMeshNext()
