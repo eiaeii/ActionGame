@@ -4,10 +4,10 @@ using System.Collections;
 public class FollowPlayer : MonoBehaviour {
 
     public Transform player;
-    public float speed = 2;
+    public float speed = 3;
 	// Use this for initialization
 	void Start () {
-        player = GameObject.FindGameObjectWithTag(Tags.strPlayer).transform;
+
 	}
 	
 	// Update is called once per frame
