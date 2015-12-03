@@ -5,7 +5,6 @@ public class PlayerMove : MonoBehaviour {
 
     public float speed = 4;
     private CharacterController cc;
-
     public Animator playerAnimator;
 
     // Use this for initialization
@@ -30,7 +29,8 @@ public class PlayerMove : MonoBehaviour {
             {
                 Vector3 targetDir = new Vector3(h, 0, v);
                 transform.LookAt(transform.position + targetDir);
-                cc.transform.position = transform.position + new Vector3(h, 0, v) * Time.deltaTime * speed;
+                //cc.transform.position = transform.position + new Vector3(h, 0, v) * Time.deltaTime * speed;
+                cc.SimpleMove(transform.forward * speed);
             }
         }
         else
