@@ -3,12 +3,12 @@ using System.Collections;
 
 public class SoulBoss : MonoBehaviour {
     private Transform player;
-    private float attackDistance = 1.5f;
+    public float attackDistance = 1.5f;
     public float speed = 2;
     private CharacterController cc;
     public Animator bosssController;
-    private float attackTime = 3;
-    private float attackTimer = 0;
+    public float attackTime = 3;
+    public float attackTimer = 0;
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag(Tags.strPlayer).transform;

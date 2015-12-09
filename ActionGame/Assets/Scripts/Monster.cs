@@ -6,10 +6,10 @@ public class Monster : MonoBehaviour {
     private Transform player;
     private CharacterController cc;
     private Animator monsterConroller;
-    private float attackDistance = 1;
-    private float speed = 3;
-    private float attackTime = 2;
-    private float attackTimer = 0;
+    public float attackDistance = 1;
+    public float speed = 3;
+    public float attackTime = 2;
+    public float attackTimer = 0;
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag(Tags.strPlayer).transform;
