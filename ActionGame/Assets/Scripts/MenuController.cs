@@ -123,7 +123,7 @@ public class MenuController : MonoBehaviour {
 
     public void OnPlay()
     {
-
+        Application.LoadLevel("Level1");
     }
 
     void Save()
