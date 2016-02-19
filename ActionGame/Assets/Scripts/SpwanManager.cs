@@ -36,12 +36,7 @@ public class SpwanManager : MonoBehaviour {
         {
             enemyList.Add(s.Spawn());
         }
-        yield return new WaitForSeconds(0.5f);
-        foreach (EnemySpawn s in monsterSpawnArray)
-        {
-            enemyList.Add(s.Spawn());
-        }
-
+       
         while (enemyList.Count > 0)
         {
             yield return new WaitForSeconds(0.2f);
@@ -52,12 +47,15 @@ public class SpwanManager : MonoBehaviour {
         {
             enemyList.Add(s.Spawn());
         }
-        yield return new WaitForSeconds(0.5f);
-        foreach (EnemySpawn s in monsterSpawnArray)
+
+        while (enemyList.Count > 0)
         {
-            enemyList.Add(s.Spawn());
+            yield return new WaitForSeconds(0.2f);
         }
+
         yield return new WaitForSeconds(0.5f);
+
+        //Boss产生
         foreach (EnemySpawn s in bossSpawnArray)
         {
             enemyList.Add(s.Spawn());
